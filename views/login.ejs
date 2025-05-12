@@ -12,33 +12,51 @@
 
 <body
     class="bg-gradient-to-r from-gray-500 via-gray-700 to-gray-900 h-screen w-screen flex items-center justify-start px-8">
+    <% if (errorMessage ){ %>
+        <div id="errorAlert"
+            class="absolute top-5 left-1/2 transform -translate-x-1/2 px-4 py-2 bg-red-500 text-white text-sm rounded shadow-md w-80">
+            <span>
+                <%= errorMessage %>
+            </span>
+        </div>
 
-    <div class="bg-black bg-opacity-30 backdrop-blur-sm p-4 rounded-md  shadow-md max-w-[280px] w-full ml-auto mr-20">
+        <script>
+            // Auto-dismiss after 5 seconds
+            setTimeout(() => {
+                const alert = document.getElementById('errorAlert');
+                if (alert) alert.remove();
+            }, 1000);
+        </script>
+        <% } %>
 
-        <h2 class="text-lg font-semibold text-center mb-3 text-gray-200">Login</h2>
+            <div
+                class="bg-black bg-opacity-30 backdrop-blur-sm p-4 rounded-md  shadow-md max-w-[280px] w-full ml-auto mr-20">
 
-        <form action="/api/login" method="POST" class="space-y-2">
-            <div>
-                <label for="email" class="block text-xs text-gray-200">Email</label>
-                <input type="email" name="email" required
-                    class="mt-0.5 w-full rounded border border-gray-300 focus:outline-none focus:ring-1 focus:ring-indigo-500 outline-none p-1 text-xs" />
+                <h2 class="text-lg font-semibold text-center mb-3 text-gray-200">Login</h2>
+
+                <form action="/api/login" method="POST" class="space-y-2">
+                    <div>
+                        <label for="email" class="block text-xs text-gray-200">Email</label>
+                        <input type="email" name="email" required
+                            class="mt-0.5 w-full rounded border border-gray-300 focus:outline-none focus:ring-1 focus:ring-indigo-500 outline-none p-1 text-xs" />
+                    </div>
+
+                    <div>
+                        <label for="password" class="block text-xs text-gray-200">Password</label>
+                        <input type="password" name="password" required
+                            class="mt-0.5 w-full rounded border border-gray-300 focus:outline-none focus:ring-1 focus:ring-indigo-500 outline-none p-1 text-xs" />
+                    </div>
+
+                    <button type="submit"
+                        class="w-full bg-indigo-600 hover:bg-indigo-700 text-gray-200 text-xs py-1 rounded">
+                        Log In
+                    </button>
+                </form>
+
+                <p class="mt-2 text-center text-xs text-gray-200">
+                    No account? <a href="/api/signup" class="text-indigo-600 hover:underline">Sign up</a>
+                </p>
             </div>
-
-            <div>
-                <label for="password" class="block text-xs text-gray-200">Password</label>
-                <input type="password" name="password" required
-                    class="mt-0.5 w-full rounded border border-gray-300 focus:outline-none focus:ring-1 focus:ring-indigo-500 outline-none p-1 text-xs" />
-            </div>
-
-            <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-gray-200 text-xs py-1 rounded">
-                Log In
-            </button>
-        </form>
-
-        <p class="mt-2 text-center text-xs text-gray-200">
-            No account? <a href="/api/signup" class="text-indigo-600 hover:underline">Sign up</a>
-        </p>
-    </div>
 </body>
 
 </html>

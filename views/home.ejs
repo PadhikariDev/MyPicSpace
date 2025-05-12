@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 text-gray-900">
+
+    <header class="bg-blue-600 text-white py-4 shadow">
+        <div class="max-w-6xl mx-auto px-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold">My Website</h1>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="/" class="hover:underline">Home</a></li>
+                    <li><a href="/about" class="hover:underline">About</a></li>
+                    <li><a href="/contact" class="hover:underline">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-10 h-screen">
+        <!-- Profile section UI -->
+        <div class="border border-gray-300 rounded-xl p-6 mb-8 flex items-center space-x-6 bg-white shadow-md">
+            <!-- Profile Picture -->
+            <div class="w-24 h-24 rounded-full bg-gray-200 flex items-center justify-center text-gray-500 text-sm">
+                <!-- Show uploaded profile picture -->
+                <img src="<%= profilePic || '/uploads/default.jpg' %>" alt="Profile Pic"
+                    class="w-full h-full object-cover rounded-full" />
+            </div>
+
+            <!-- Upload form -->
+            <form action="/api/upload-profile-pic" method="POST" enctype="multipart/form-data" class="space-y-2">
+                <label class="block text-gray-700 font-medium">Upload your photo:</label>
+                <input type="file" name="profilePic" accept="image/*"
+                    class="block text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" />
+                <button type="submit"
+                    class="inline-block bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700 transition">
+                    Upload
+                </button>
+            </form>
+        </div>
+
+        <!-- Welcome text -->
+        <h2 class="text-4xl font-semibold mb-4">Welcome, <%= email %>
+        </h2>
+        <p class="text-lg text-gray-700">This is a simple EJS page styled with Tailwind CSS.</p>
+    </main>
+
+
+    <footer class="bg-gray-800 text-white mt-12 py-4">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            &copy; <%= new Date().getFullYear() %> My Website. All rights reserved.
+        </div>
+    </footer>
+
+</body>
+
+</html>
