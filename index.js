@@ -32,8 +32,6 @@ connectMD("mongodb://127.0.0.1:27017/myPicSpace").then(() => {
     console.error("Error connecting to the DataBase.");
 })
 
-
-
 app.listen(PORT, () => {
     console.log("Server started.");
 });

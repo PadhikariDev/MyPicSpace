@@ -12,7 +12,7 @@ const diskStorage = multer.diskStorage({
         cb(null, path.join(__dirname, "../uploads"));
     },
     filename: function (req, file, cb) {
-        const uniqueName = Date.now() + "-" + file.originalname;
+        const uniqueName = Date.now() + "-" + file.originalname; //gives the new name to the files uploading in the device
         cb(null, uniqueName);
     }
 })
